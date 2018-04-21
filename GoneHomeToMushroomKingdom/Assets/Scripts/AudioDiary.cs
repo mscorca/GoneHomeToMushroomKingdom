@@ -4,18 +4,30 @@ using UnityEngine;
 
 public class AudioDiary : MonoBehaviour {
 
-        public AudioClip audioMessage;
+    public AudioClip audioMessage;
 
-        private AudioSource source;
+    private AudioSource source;
 
-        // Use this for initialization
-        void Start()
-        {
-            source = transform.GetComponent<AudioSource>();
-        }
+    // Use this for initialization
+    void Start()
+    {
+        source = transform.GetComponent<AudioSource>();
+    }
 
-        public void OnClicked()
+    public void OnClicked()
+    {
+        enableAudio();
+    }
+
+    private void enableAudio ()
+    {
+        if (!source.isPlaying)
         {
             source.PlayOneShot(audioMessage);
+        } else
+        {
+            source.Stop();
         }
-    }    
+            
+    }
+}    
