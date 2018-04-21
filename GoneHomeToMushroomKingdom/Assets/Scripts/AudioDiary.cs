@@ -6,28 +6,13 @@ public class AudioDiary : MonoBehaviour {
 
     public AudioClip audioMessage;
 
-    private AudioSource source;
-
-    // Use this for initialization
-    void Start()
-    {
-        source = transform.GetComponent<AudioSource>();
-    }
-
     public void OnClicked()
     {
-        enableAudio();
+        GetAudioClip();
     }
 
-    private void enableAudio ()
+    public AudioClip GetAudioClip ()
     {
-        if (!source.isPlaying)
-        {
-            source.PlayOneShot(audioMessage);
-        } else
-        {
-            source.Stop();
-        }
-            
+        return audioMessage;
     }
 }    

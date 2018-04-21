@@ -16,11 +16,18 @@ public class FPController : MonoBehaviour
     private Camera _camera;
     [SerializeField] private MouseLook _mouseLook;
 
+    // audio diaries
+    private AudioClip currentAudioDiary;
+    private AudioSource source;
+
     protected void Awake()
     {
         _characterController = GetComponent<CharacterController>();
         _camera = GetComponentInChildren<Camera>();
         _mouseLook.Init(transform, _camera.transform);
+
+        source = transform.GetComponent<AudioSource>();
+        currentAudioDiary = null;
     }
 
     protected void Update()
@@ -44,7 +51,8 @@ public class FPController : MonoBehaviour
                 // the object identified by hit.transform was clicked
                 if (hit.transform.GetComponent<AudioDiary>() != null)
                 {
-                    hit.transform.GetComponent<AudioDiary>().OnClicked();
+                    currentAudioDiary = hit.transform.GetComponent<AudioDiary>().GetAudioClip();
+                    PlayCurrentAudioDiary();
                 }
                 
             }
@@ -66,5 +74,12 @@ public class FPController : MonoBehaviour
     private void RotateView()
     {
         _mouseLook.LookRotation(transform, _camera.transform);
+    }
+
+    private void PlayCurrentAudioDiary()
+    {
+        // stop whatever is playing and restart just-clicked audio
+        source.Stop();
+        source.PlayOneShot(currentAudioDiary);
     }
 }
