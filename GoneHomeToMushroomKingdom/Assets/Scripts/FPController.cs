@@ -8,6 +8,7 @@ using UnityStandardAssets.Utility;
 [RequireComponent(typeof(CharacterController))]
 public class FPController : MonoBehaviour
 {
+    public float maxInteractDistance = 3.0f;
 
     private Vector2 _movementInput;
     private CharacterController _characterController;
@@ -36,8 +37,10 @@ public class FPController : MonoBehaviour
         { 
             Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
+            // raycast within max interact distance
+            if (Physics.Raycast(ray, out hit, maxInteractDistance))
             {
+                //if (hit.transform)
                 // the object identified by hit.transform was clicked
                 if (hit.transform.GetComponent<AudioDiary>() != null)
                 {
