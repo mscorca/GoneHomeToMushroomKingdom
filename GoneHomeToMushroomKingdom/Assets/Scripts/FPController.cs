@@ -31,6 +31,22 @@ public class FPController : MonoBehaviour
 
         _movementInput.x = horizontal;
         _movementInput.y = vertical;
+
+        if (Input.GetMouseButtonDown(0))
+        { 
+            Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit))
+            {
+                // the object identified by hit.transform was clicked
+                if (hit.transform.GetComponent<AudioDiary>() != null)
+                {
+                    hit.transform.GetComponent<AudioDiary>().OnClicked();
+                }
+                
+            }
+        }
+        
     }
 
     protected void FixedUpdate()
