@@ -59,19 +59,27 @@ public class PlatformingInteraction : MonoBehaviour
         }
 
         // Turn off UI
-        if(_currentPlatform != null)
+        if (_currentPlatform != null)
         {
+            /*
+            RaycastHit hit;
+            Physics.Raycast(transform.position, Camera.main.transform.forward, out hit, 100);
+            Debug.Log("HIT: " + hit.collider.gameObject);
+            if (hit.collider.gameObject.name == _currentPlatform.name)
+            {
+            */
             PlatformInteractUI.color = _opaque;
             if (Input.GetKeyDown(KeyCode.E) && !_isJumping && _fpsController.m_CharacterController.isGrounded)
             {
                 _isJumping = true;
                 _fpsController.IsScriptedJumping = true;
                 _lerpStartPos = transform.position;
-                _lerpEndPos = new Vector3(_currentPlatform.transform.position.x, 
-                                          _currentPlatform.transform.position.y + _currentPlatform.transform.localScale.y/2 + 1,
-                                          _currentPlatform.transform.position.z);
+                _lerpEndPos = new Vector3(_currentPlatform.transform.position.x,
+                                            _currentPlatform.transform.position.y + _currentPlatform.transform.localScale.y / 2 + 1,
+                                            _currentPlatform.transform.position.z);
                 _currentLerpTime = 0.0f;
             }
+            //}
         }
 
         if (_isJumping)
