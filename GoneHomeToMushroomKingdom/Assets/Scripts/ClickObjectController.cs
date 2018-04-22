@@ -46,7 +46,7 @@ public class ClickObjectController : MonoBehaviour {
                     currentAudioDiary = hit.transform.GetComponent<AudioDiary>().GetAudioClip();
                     PlayCurrentAudioDiary();
                 }
-                else if (hit.transform.GetComponent<Note>() != null)
+                if (hit.transform.GetComponent<Note>() != null)
                 {
                     currentNoteText = hit.transform.GetComponent<Note>().GetText();
                     currentFont = hit.transform.GetComponent<Note>().GetFont();
