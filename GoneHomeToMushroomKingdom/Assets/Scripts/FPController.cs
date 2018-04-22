@@ -8,17 +8,11 @@ using UnityStandardAssets.Utility;
 [RequireComponent(typeof(CharacterController))]
 public class FPController : MonoBehaviour
 {
-    public float maxInteractDistance = 3.0f;
-
     private Vector2 _movementInput;
     private CharacterController _characterController;
     public float Speed;
     private Camera _camera;
     [SerializeField] private MouseLook _mouseLook;
-
-    // audio diaries
-    private AudioClip currentAudioDiary;
-    private AudioSource source;
 
     protected void Awake()
     {
@@ -26,8 +20,6 @@ public class FPController : MonoBehaviour
         _camera = GetComponentInChildren<Camera>();
         _mouseLook.Init(transform, _camera.transform);
 
-        source = transform.GetComponent<AudioSource>();
-        currentAudioDiary = null;
     }
 
     protected void Update()
@@ -38,26 +30,7 @@ public class FPController : MonoBehaviour
         float vertical = Input.GetAxis("Vertical");
 
         _movementInput.x = horizontal;
-        _movementInput.y = vertical;
-
-        if (Input.GetMouseButtonDown(0))
-        { 
-            Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            // raycast within max interact distance
-            if (Physics.Raycast(ray, out hit, maxInteractDistance))
-            {
-                //if (hit.transform)
-                // the object identified by hit.transform was clicked
-                if (hit.transform.GetComponent<AudioDiary>() != null)
-                {
-                    currentAudioDiary = hit.transform.GetComponent<AudioDiary>().GetAudioClip();
-                    PlayCurrentAudioDiary();
-                }
-                
-            }
-        }
-        
+        _movementInput.y = vertical;        
     }
 
     protected void FixedUpdate()
@@ -76,10 +49,4 @@ public class FPController : MonoBehaviour
         _mouseLook.LookRotation(transform, _camera.transform);
     }
 
-    private void PlayCurrentAudioDiary()
-    {
-        // stop whatever is playing and restart just-clicked audio
-        source.Stop();
-        source.PlayOneShot(currentAudioDiary);
-    }
 }
