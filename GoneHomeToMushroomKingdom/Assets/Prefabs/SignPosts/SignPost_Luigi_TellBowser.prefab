@@ -116,8 +116,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1786963043149604}
-  m_LocalRotation: {x: -0.3799917, y: -0.59632736, z: -0.59632736, w: -0.3799917}
-  m_LocalPosition: {x: 2.1227908, y: -29.756771, z: -5.5093803}
+  m_LocalRotation: {x: -0.7066856, y: -0.02440365, z: -0.02440365, w: -0.7066856}
+  m_LocalPosition: {x: -14.225184, y: -37.690426, z: -5.510002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4790356563518612}
@@ -125,7 +125,7 @@ Transform:
   - {fileID: 4498475181617672}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -155.012, y: -90, z: -90}
+  m_LocalEulerAnglesHint: {x: -266.045, y: -90, z: -90}
 --- !u!23 &23384435252076018
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -348,7 +348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3efca1ec1140d5f468815ab0c7d1ade1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioMessage: {fileID: 8300000, guid: feba4ae0bb6586a45b71e3856874281c, type: 3}
+  audioMessage: {fileID: 8300000, guid: c71cbffae9d74a04a82c9d5fc6fdd5f1, type: 3}
 --- !u!222 &222483828816187096
 CanvasRenderer:
   m_ObjectHideFlags: 1
