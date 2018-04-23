@@ -11,7 +11,6 @@ public class Note : MonoBehaviour {
     // Use this for initialization
     void Awake () {
         text = GetComponent<Text>();
-        Debug.Log(text.font);
     }
 
     public Text GetText ()
