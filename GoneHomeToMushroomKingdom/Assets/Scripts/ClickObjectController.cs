@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ClickObjectController : MonoBehaviour {
+public class ClickObjectController : MonoBehaviour
+{
 
-    public float maxInteractDistance = 3.0f;
+    public float maxInteractDistance = 4.5f;
 
     private Camera _camera;
 
@@ -20,7 +21,8 @@ public class ClickObjectController : MonoBehaviour {
     private Image notePaper;
 
     // Use this for initialization
-    void Awake () {
+    void Awake()
+    {
         source = transform.GetComponent<AudioSource>();
         _camera = GetComponentInChildren<Camera>();
         currentAudioDiary = null;
@@ -29,10 +31,12 @@ public class ClickObjectController : MonoBehaviour {
         currentNoteText = noteText;
         currentFont = GetComponentInChildren<Text>().font;
         notePaper = GetComponentInChildren<Image>();
+        notePaper.gameObject.SetActive(false);
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
@@ -52,7 +56,7 @@ public class ClickObjectController : MonoBehaviour {
                     currentFont = hit.transform.GetComponent<Note>().GetFont();
                     ReadCurrentNote();
                 }
-                if(hit.transform.GetComponent<CoinInteractable>() != null)
+                if (hit.transform.GetComponent<CoinInteractable>() != null)
                 {
                     hit.transform.GetComponent<CoinInteractable>().ActivatePlatform();
                 }
@@ -74,6 +78,7 @@ public class ClickObjectController : MonoBehaviour {
 
     private void ReadCurrentNote()
     {
+        notePaper.gameObject.SetActive(true);
         noteText.text = currentNoteText.text;
         transform.GetComponentInChildren<Text>().font = currentNoteText.font;
         noteText.enabled = true;
@@ -84,5 +89,6 @@ public class ClickObjectController : MonoBehaviour {
     {
         noteText.enabled = false;
         notePaper.enabled = false;
+        notePaper.gameObject.SetActive(false);
     }
 }
