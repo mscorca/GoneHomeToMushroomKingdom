@@ -52,6 +52,10 @@ public class ClickObjectController : MonoBehaviour {
                     currentFont = hit.transform.GetComponent<Note>().GetFont();
                     ReadCurrentNote();
                 }
+                if(hit.transform.GetComponent<CoinInteractable>() != null)
+                {
+                    hit.transform.GetComponent<CoinInteractable>().ActivatePlatform();
+                }
 
             }
         }
