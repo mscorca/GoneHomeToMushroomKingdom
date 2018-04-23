@@ -28,11 +28,15 @@ public class SoundManager : MonoBehaviour
     #endregion
 
     public AudioClip CoinSound;
+    public AudioClip AmbientMusic;
+    public AudioClip RainTrack;
     private AudioSource _audioSource;
 
     protected void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
+        _audioSource.PlayOneShot(AmbientMusic);
+        _audioSource.PlayOneShot(RainTrack);
     }
 
     public void PlayCoinSound()

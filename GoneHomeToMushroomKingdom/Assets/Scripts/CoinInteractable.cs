@@ -9,7 +9,7 @@ public class CoinInteractable : MonoBehaviour
 
     protected void Awake()
     {
-        _rotateValue = new Vector3(0.5f, 0f, 0);
+        _rotateValue = new Vector3(1.5f, 0f, 0);
     }
 
     protected void Update()
@@ -21,5 +21,6 @@ public class CoinInteractable : MonoBehaviour
     {
         AssociatedPlatform.SetActive(true);
         SoundManager.Instance.PlayCoinSound();
+        gameObject.SetActive(false);
     }
 }
